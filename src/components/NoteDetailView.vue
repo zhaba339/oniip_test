@@ -1,26 +1,21 @@
+<template>
+  <div class="note-detail-view">
+    <h3 class="note-title">{{ note.title }}</h3>
+    <p class="note-text">{{ note.content }}</p>
+  </div>
+</template>
+
 <script>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import NoteForm from "./NoteForm.vue";
 
 export default {
   name: 'NoteDetailView',
-  props: ['note_id'],  // Принимаем note_id как пропс
-  setup(props) {
-    const note = ref({})
-
-    const fetchNote = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8000/notes/${props.note_id}`)
-        note.value = response.data
-      } catch (error) {
-        console.error('Ошибка при получении заметки:', error)
-      }
-    }
-
-    onMounted(fetchNote)
-
-    return {
-      note
+  props: {
+    note: {
+      type: Object,
+      required: true
     }
   }
 }

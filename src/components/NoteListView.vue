@@ -10,6 +10,7 @@
           <p class="note-text">{{ note.content }}</p>
         </div>
         <button @click="deleteNote(note.id)" class="delete-button">Удалить</button>
+        <router-link to="/more_detail"><button class="more-button">Подробнее</button></router-link>
       </li>
     </ul>
   </div>
@@ -19,11 +20,13 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import NoteForm from './NoteForm.vue'
+import NoteDetailView from "./NoteDetailView.vue";
 
 export default {
   name: 'NoteListView',
   components: {
-    NoteForm
+    NoteForm,
+    NoteDetailView,
   },
   setup() {
     const notes = ref([])
@@ -110,5 +113,20 @@ export default {
 
 .delete-button:hover {
   background-color: #c82333;
+}
+
+.more-button {
+  margin-top: 10px;
+  margin-left: 5px;
+  background-color: #23c839;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.more-button:hover {
+  background-color: #0e8b29;
 }
 </style>

@@ -9,11 +9,11 @@ const routes = [
     component: NoteListView
   },
   {
-    path: '/notes/:note_id',
-    name: 'note-detail',
+    path: '/more_detail',
+    name: 'note-detail-view',
     component: NoteDetailView,
     props: true
-  }
+  },
 ]
 
 const router = createRouter({
